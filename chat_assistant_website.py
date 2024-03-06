@@ -2,16 +2,11 @@
 import openai
 import gradio
 
-# Import the OpenAI class from the openai module. This line is redundant
-# because you already imported openai above, and you can directly use openai.OpenAI.
-from openai import OpenAI
-
 # Initialize the OpenAI client. Note that this line is not necessary if you're using the openai library directly
 # as shown in the response = openai.ChatCompletion.create(...) line.
 client = OpenAI()
 
 # Create a list of messages with an initial system message that sets the context for the ChatGPT model.
-# The model will act like Samuel L Jackson.
 messages = [{"role": "system", "content": "You are professional accountant"}]
 
 # Define the function that will handle the conversation with the ChatGPT model.
@@ -34,9 +29,6 @@ def CustomChatGPT(user_input):
     # Return the assistant's reply for the interface to display.
     return ChatGPT_reply
 
-# URL or path to your image of Samuel L. Jackson
-image_url = '/Users/juanfran/code/Personal_projects/Chatbot/sam.jpeg'
-# Create a Gradio interface with a text input and output, and a title.
 # The interface uses the CustomChatGPT function to process user input and generate replies.
 demo = gradio.Interface(fn=CustomChatGPT, inputs="text", outputs="text", title="AI Personal Accountant ChatBot")
 
